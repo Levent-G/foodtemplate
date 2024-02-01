@@ -1,8 +1,11 @@
 import React from 'react'
 import HomePage from './HomePage'
+import Menu from "../layout/Menu";
 const Home = () => {
   return (
-    <div><HomePage/></div>
+    <div>
+      <Menu/>
+      <HomePage/></div>
   )
 }
 
