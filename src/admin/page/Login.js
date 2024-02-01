@@ -4,9 +4,9 @@ import TypographyComp from "../../components/TypographyComp";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useNavigate, Link } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
-  const [hata, setHata] = useState(false);
   const [yukleniyor, setYukleniyor] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -16,14 +16,14 @@ const Login = () => {
   //LOGIN START ------------------------------------------------
   const LoginFunction = async (e) => {
     e.preventDefault();
-    setHata(false);
     setYukleniyor(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setYukleniyor(false);
+      toast.success(`Hoşgeldin ${email}`);
       navigate("/admin");
     } catch (error) {
-      setHata(error.message);
+      toast.error(error.message);
       setYukleniyor(false);
     }
   };
@@ -57,9 +57,7 @@ const Login = () => {
             Yükleniyor lütfen bekleyiniz...
           </span>
         )}
-        {hata && (
-          <span className="bg-red-500 p-5 w-full rounded-lg">{hata}</span>
-        )}
+      
         <button
           variant="contained"
           className=" bg-blue-950 p-4 text-white mt-5"

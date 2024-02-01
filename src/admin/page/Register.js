@@ -4,8 +4,10 @@ import TypographyComp from "../../components/TypographyComp";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
-  const [hata, setHata] = useState(false);
+
   const [yukleniyor, setYukleniyor] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -16,7 +18,7 @@ const Register = () => {
   const SignUpFunction = async (e) => {
     e.preventDefault();
     setYukleniyor(true);
-    setHata(false);
+  
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       try {
@@ -25,11 +27,11 @@ const Register = () => {
         });
         setYukleniyor(false);
       } catch (error) {
-        setHata(error.message);
+        toast.error(error.message);
         setYukleniyor(false);
       }
     } catch (error) {
-      setHata(error.message);
+      toast.error(error.message);
       setYukleniyor(false);
     }
   };
@@ -79,7 +81,7 @@ const Register = () => {
         {yukleniyor && (
           <span className="bg-blue-500">Yükleniyor lütfen bekleyiniz...</span>
         )}
-        {hata && <span className="bg-red-500 p-5 w-full">{hata}</span>}
+      
         <button
           variant="contained"
           className=" bg-blue-950 p-4 text-white mt-5"

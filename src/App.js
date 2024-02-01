@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "./admin/context/authContext";
 import  Login  from "./admin/page/Login";
 import Register from "./admin/page/Register";
-
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { girisKullanici } = useContext(AuthContext);
@@ -18,6 +18,7 @@ function App() {
   };
   return (
     <div className="App">
+      <ToastContainer position="top-right"/>
       <BrowserRouter>    
         <Routes>
           <Route path="/" element={<Home />}></Route>
