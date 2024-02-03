@@ -6,6 +6,12 @@ import { AuthContext } from "./admin/context/authContext";
 import  Login  from "./admin/page/Login";
 import Register from "./admin/page/Register";
 import { ToastContainer } from "react-toastify";
+import MenuControl from "./admin/page/ControlPage/MenuControl";
+import CardControl from "./admin/page/ControlPage/CardControl";
+import FontAndFamilyControl from "./admin/page/ControlPage/FontAndFamilyControl";
+import FooterControl from "./admin/page/ControlPage/FooterControl";
+import HeaderControl from "./admin/page/ControlPage/HeaderControl";
+import NewItemControl from "./admin/page/ControlPage/NewItemControl";
 
 function App() {
   const { girisKullanici } = useContext(AuthContext);
@@ -24,10 +30,65 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/admin">
             <Route
+              path="home"
               index
               element={
                 <YonlendirmeKontrol>
                   <HomePageAdmin />
+                </YonlendirmeKontrol>
+              }
+            />
+              <Route
+              path="menucontrol"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <MenuControl />
+                </YonlendirmeKontrol>
+              }
+            />
+             <Route
+              path="fontandfamily"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <FontAndFamilyControl />
+                </YonlendirmeKontrol>
+              }
+            />
+              <Route
+              path="headercontrol"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <HeaderControl />
+                </YonlendirmeKontrol>
+              }
+            />
+             <Route
+              path="cardcontrol"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <CardControl />
+                </YonlendirmeKontrol>
+              }
+            />
+             <Route
+              path="newitem"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <NewItemControl />
+                </YonlendirmeKontrol>
+              }
+            />
+             <Route
+              path="footercontrol"
+              index
+              element={
+                <YonlendirmeKontrol>
+                  <FooterControl />
                 </YonlendirmeKontrol>
               }
             />

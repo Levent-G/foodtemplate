@@ -21,7 +21,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       setYukleniyor(false);
       toast.success(`Hoşgeldin ${email}`);
-      navigate("/admin");
+      navigate("/admin/home");
     } catch (error) {
       toast.error(error.message);
       setYukleniyor(false);

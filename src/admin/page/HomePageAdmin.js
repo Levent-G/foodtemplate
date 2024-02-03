@@ -1,19 +1,13 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/authContext";
-import { auth } from "../../firebase/firebase";
-import { signOut } from "firebase/auth";
+import React from 'react'
 import SideBar from "../layouts/SideBar";
 const HomePageAdmin = () => {
-  const { girisKullanici } = useContext(AuthContext);
-  console.log(girisKullanici);
+
+
   return (
     <div>
-      <div >
+      <div>
         <SideBar />
-        <div>
-          {girisKullanici.displayName}
-          <button onClick={() => signOut(auth)}>Çıkış</button>
-        </div>
+         Home
       </div>
     </div>
   );
